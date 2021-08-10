@@ -1,0 +1,9 @@
+{
+  "name": "Daily Finger Frame",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "pro_id": "io.thundercode.dff",
+  "id": "io.thundercode.dff"
+}

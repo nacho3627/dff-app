@@ -1,0 +1,36 @@
+<ion-content>
+  <div ion-fixed style="width: 100%;height: 100%;">
+    <div *ngIf="!connectionAvailable" class="disconnected">
+      No internet connection, please connect to use this App...
+    </div>
+
+    <div class="work-viewer-wrapper" (click)="activateBars()">
+      <div *ngIf="loadStep == LoadStep.LOADING_SPLASH_SCREEN" class="pre-splash">
+        Loading...
+      </div>
+
+
+      <img *ngIf="splashScreenSrc != null" class="splash-screen"
+           [ngClass]="{'active': (loadStep != LoadStep.LOADED) && connectionAvailable}" (load)="splashScreenLoaded()"
+           src="{{splashScreenSrc}}"/>
+
+      <div class="work-wrapper" *ngIf="loadStep == LoadStep.LOADED">
+        <div *ngIf="currentWorkURL!=null" id="work"
+             [ngStyle]="{'background-image': 'url(' + currentWorkURL + ')'}">
+        </div>
+
+        <div>
+          <img class="hidden-image" src="{{currentWorkURL}}"/>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div *ngIf="PremiumApp" class="bottom-bar" [ngClass]="{'active': activeBars}">
+      <div class="center">
+        <button (click)="videoButtonClicked()"></button>
+      </div>
+    </div>
+  </div>
+</ion-content>
